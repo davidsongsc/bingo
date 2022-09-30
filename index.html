@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>BINGO BZ97</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&family=Spline+Sans+Mono:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&family=Potta+One&family=Spline+Sans+Mono:wght@300&display=swap');
+        * {
+            text-align: center;
+            align-items: center;
+        }
+        body {
+            background-image: url('bingo.jpeg');
+            background-color: rgb(255, 145, 0);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #btnGenerate {
+            margin-left: -90%;
+            margin-top: -90px;
+            color: rgb(245, 245, 245);
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Potta One', cursive;
+            font-family: 'Spline Sans Mono', monospace;
+            font-size: 30px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 10px;
+        }
+
+        #btnGenerate:hover {
+            background-color: rgb(95, 70, 0);
+            color: rgb(141, 141, 141);
+        }
+
+
+        .barrasuperior {
+            margin-top: -70px;
+            margin-left: -8px;
+            background-color: whitesmoke;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: fixed;
+            padding: 5px;
+            width: 99.5%;
+            height: 60px;
+
+        }
+
+        .container {
+            position: fixed;
+            align-items: center;
+            text-align: center;
+            margin-left: 1350px;
+            margin-top: -650px;
+
+        }
+
+        h1 {
+            margin-top: 6px;
+            font-size: 50px;
+            font-family: 'Spline Sans Mono', monospace;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        .bigNumberDisplay {
+            margin-top: -82px;
+            text-align: right;
+            opacity: 1;
+            font-size: 30px;
+        }
+
+        .numbersTable {
+            border: #000000;
+            border-radius: 20px;
+            margin-top: 60px;
+            font-size: 20px;
+            
+
+        }
+
+        table {
+            border-radius: 10px;
+            background-color: rgba(240, 255, 255, 0.651);
+
+
+        }
+
+        table,
+        tr,
+        td {
+            padding: 2.4px 5px 4.4px 35px;
+        }
+
+        td {
+            max-width: 100%;
+            color: rgba(255, 145, 0, 0);
+            border-radius: 1%;
+            animation: 1.0s;
+            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Potta One', cursive;
+            font-family: 'Spline Sans Mono', monospace;
+            font-size: 70px;
+
+        }
+
+        td.selected {
+            color: rgb(0, 0, 0);
+            text-shadow: 3px 3px 9px rgb(255, 255, 255);
+            padding: 0px 2px 0px 2px;
+            border-radius: 62px;
+            transition: 2.5s;
+            transition-delay: 2.45s;
+            animation-name: sprite;
+            animation-duration: 2.5s;
+            animation-timing-function: steps(11);
+            animation-iteration-count: steps(1);
+            border: 1px solid #000000;
+            line-height: 1em;
+            text-align: center;
+            -moz-box-shadow: 3px 3px 2px #000000;
+            -webkit-box-shadow: 3px 3px 2px #000000;
+            box-shadow: 3px 3px 2px #000000;
+            background-image: linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -o-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -moz-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -webkit-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -ms-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(255, 255, 255)), color-stop(0.5, rgb(255, 255, 255)), color-stop(0.5, rgb(0, 0, 0)));
+            background-size: 2px 2px;
+            opacity: 100%;
+
+        }
+
+        span {
+            animation-name: sprite;
+            animation-duration: 2.5s;
+            animation-timing-function: steps(11);
+            animation-iteration-count: steps(1);
+            color: rgb(255, 255, 255);
+            text-shadow: 3px 3px 9px rgba(17, 17, 17, 0);
+            border-radius: 10%;
+            font-family: 'Spline Sans Mono', monospace;
+            border: 1px solid #ffffff;
+            background-color: #ff0000;
+            border: 1px solid #000000;
+            line-height: 1.5em;
+            padding: 5px;
+            text-align: center;
+            -moz-box-shadow: 3px 3px 2px #000000;
+            -webkit-box-shadow: 3px 3px 2px #000000;
+            box-shadow: 3px 3px 2px #000000;
+            background-image: linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -o-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -moz-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -webkit-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -ms-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+            background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(255, 255, 255)), color-stop(0.5, rgb(255, 255, 255)), color-stop(0.5, rgb(0, 0, 0)));
+            background-size: 2px 2px;
+        }
+
+        .numberofthe {
+            position: absolute;
+        }
+
+        @keyframes sprite {
+            0% {
+                box-shadow: inset -80px -80px 80px rgb(255, 255, 255), inset 80px 80px 80px rgb(255, 127, 127);
+            }
+
+            10% {
+                box-shadow: inset -70px -70px 70px rgb(255, 0, 0), inset 70px 70px 70px rgb(255, 255, 255);
+            }
+
+            20% {
+                box-shadow: inset -60px -60px 60px rgb(255, 209, 110), inset 60px 60px 60px rgb(255, 217, 0);
+            }
+
+            30% {
+                box-shadow: inset -70px -70px 70px rgb(131, 255, 119), inset 70px 70px 70px rgb(43, 255, 0);
+            }
+
+            40% {
+                box-shadow: inset -80px -80px 80px rgb(0, 250, 167), inset 80px 80px 80px rgb(0, 214, 252);
+            }
+
+            50% {
+                box-shadow: inset -90px -90px 90px rgb(90, 142, 255), inset 90px 90px 90px rgb(16, 44, 172);
+            }
+
+            60% {
+                box-shadow: inset -80px -80px 80px rgb(153, 0, 255), inset 80px 80px 80px rgb(131, 207, 8);
+            }
+
+            70% {
+                box-shadow: inset -70px -70px 70px rgb(224, 137, 6), inset 70px 70px 70px rgb(rgb(144, 30, 197))
+            }
+
+            80% {
+                box-shadow: inset -60px -60px 60px rgb(126, 22, 22), inset 60px 60px 60 rgb(207, 72, 72);
+            }
+
+            90% {
+                box-shadow: inset -80px -50px 90px rgb(89, 150, 31), inset 90px 50px 80px rgb(181, 184, 29);
+            }
+
+            100% {
+
+                box-shadow: inset -70px -70px 70px rgba(214, 15, 188, 0.932), inset 70px 70px 70px rgb(216, 35, 35);
+            }
+
+
+        }
+  
+    </style>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var bingo = {
+                selectedNumbers: [],
+                generateRandom: function () {
+                    var min = 1;
+                    var max = 75;
+                    var random = Math.floor(Math.random() * (max - min + 1)) + min;
+                    return random;
+                },
+                generateNextRandom: function () {
+                    if (bingo.selectedNumbers.length > 75) {
+                        alert("All numbers Exhausted");
+                        return 0;
+                    }
+                    var random = bingo.generateRandom();
+                    while ($.inArray(random, bingo.selectedNumbers) > -1) {
+                        random = bingo.generateRandom();
+                    }
+                    bingo.selectedNumbers.push(random);
+                    return random;
+                }
+            };
+            
+            $('td').each(function () {
+                var concatClass = this.cellIndex + "" + this.parentNode.rowIndex;
+                var numberString = parseInt(concatClass, 10).toString();
+                if (numberString >= 1 & numberString <= 15) {
+                    $(this).addClass("cell" + numberString).text(String("B-" + numberString));
+                }
+                else if (numberString >= 16 & numberString <= 30) {
+                    $(this).addClass("cell" + numberString).text(String("I-" + numberString));
+                }
+                else if (numberString >= 31 & numberString <= 45) {
+                    $(this).addClass("cell" + numberString).text(String("N-" + numberString));
+                }
+                else if (numberString >= 46 & numberString <= 60) {
+                    $(this).addClass("cell" + numberString).text(String("G-" + numberString));
+                }
+                else if (numberString >= 61 & numberString <= 75) {
+                    $(this).addClass("cell" + numberString).text(String("O-" + numberString));
+                }
+                else {
+                    $(this).addClass("cell" + numberString).text(String("X-" + numberString));
+                }
+
+            });
+            $('#btnGenerate').click(function () {
+                var random = bingo.generateNextRandom().toString();
+                if (random >= 1 & random <= 15) {
+                    $('.bigNumberDisplay span').text(String("B-" + random));
+
+                }
+                else if (random >= 16 & random <= 30) {
+                    $('.bigNumberDisplay span').text(String("I-" + random));
+                }
+                else if (random >= 31 & random <= 45) {
+                    $('.bigNumberDisplay span').text(String("N-" + random));
+                }
+                else if (random >= 46 & random <= 60) {
+                    $('.bigNumberDisplay span').text(String("G-" + random));
+                }
+                else if (random >= 61 & random <= 75) {
+                    $('.bigNumberDisplay span').text(String("O-" + random));
+                }
+                else {
+                    $('.bigNumberDisplay span').text(String("X-" + random));
+                }
+
+                $('td.cell' + random).addClass('selected');
+            });
+            window.onbeforeunload = function (e) {
+                e = e || window.event;
+                var returnString = 'Are you sure?';
+                if (e) {
+                    e.returnValue = returnString;
+                }
+                return returnString;
+            };
+        });
+        var min, seg; min = 0; seg = 9
+
+    </script>
+</head>
+
+<body>
+    
+    <div class="barrasuperior">
+        <div class="container">
+        </div>
+        <h1>Outback Via Parque</h1>
+        <div>
+            <input id="btnGenerate" type="button" value="SORTEAR" />
+        </div>
+        <div class="bigNumberDisplay">
+            <span class="fujnqofuof">Não é possivel voltar o sorteio. Os valores são aleatórios! Bom Jogo!</span>
+        </div>
+    </div>
+    <div class="numbersTable">
+        
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+
+        </table>
+    </div>
+
+    <br />
+
+
+    </div>
+
+    <head>
+        <script language="javaScript">
+
+        </script>
+    </head>
+
+    
+
+</body>
+
+</html>
